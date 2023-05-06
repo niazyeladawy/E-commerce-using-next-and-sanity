@@ -1,11 +1,16 @@
 import React from 'react'
 import { client } from '../lib/client'
 import { HeroBanner, FooterBanner, Product } from '../components'
+import { Toaster } from 'react-hot-toast'
 
 const Home = ({ products, bannerData }) => {
 
   return (
     <>
+     <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
       <HeroBanner bannerData={bannerData.length && bannerData[0]} />
       <div className='products-heading'>
         <h2>Best selling products</h2>

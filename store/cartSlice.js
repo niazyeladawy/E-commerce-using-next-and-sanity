@@ -11,6 +11,7 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addItem: (state, action) => {
+           
             const existingItemIndex = state.items.findIndex((i) => i.id === action.payload.id);
 
             if (existingItemIndex !== -1) {
@@ -30,6 +31,7 @@ export const cartSlice = createSlice({
             state.total -= action.payload.price;
         },
         decreaseQty: (state, action) => {
+            console.log("dsda" ,  state)
             const existingItemIndex = state.items.findIndex((i) => i.id === action.payload.id);
 
             if (existingItemIndex !== -1) {
@@ -47,18 +49,12 @@ export const cartSlice = createSlice({
             }
         },
         increaseQty: (state, action) => {
+            console.log("dsda" ,  state)
             const existingItemIndex = state.items.findIndex((i) => i.id === action.payload.id);
             if (existingItemIndex !== -1) {
-                if (state.items[existingItemIndex].quantity > 1) {
-                    // If the quantity is greater than 1, decrease it by 1
-                    state.items[existingItemIndex].quantity += 1;
+                state.items[existingItemIndex].quantity += 1;
 
-                    state.total += state.items[existingItemIndex].price;
-                } else {
-                    // If the quantity is 1 or less, remove the item from the cart
-                    state.items.splice(existingItemIndex, 1);
-                    state.total += state.items[existingItemIndex].price;
-                }
+                state.total += state.items[existingItemIndex].price;
             }
         },
         clearCart: (state) => {
